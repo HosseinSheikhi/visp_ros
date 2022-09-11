@@ -15,6 +15,8 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   tf
   visp_bridge
+  actionlib
+  std_srvs
 )
 
 ## Declare ROS messages and services
@@ -84,6 +86,7 @@ catkin_package(
     std_msgs
     tf
     visp_bridge
+    
 
   DEPENDS
     VISP
@@ -157,6 +160,7 @@ add_dependencies(${PROJECT_NAME} ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_gene
 add_executable(${PROJECT_NAME}_biclops_node nodes/biclops.cpp)
 add_executable(${PROJECT_NAME}_afma6_node nodes/afma6.cpp)
 add_executable(${PROJECT_NAME}_viper650_node nodes/viper650.cpp)
+add_executable(${PROJECT_NAME}_photometric_node nodes/photometricVisualServoingWithoutVpServo.cpp)
 add_executable(${PROJECT_NAME}_viper850_node nodes/viper850.cpp)
 add_executable(${PROJECT_NAME}_blob_tracker_node nodes/blob_tracker.cpp)
 add_executable(${PROJECT_NAME}_pbvs_blob_node nodes/pbvs_blob.cpp)
@@ -168,6 +172,7 @@ endif()
 target_link_libraries(${PROJECT_NAME}_biclops_node ${catkin_LIBRARIES})
 target_link_libraries(${PROJECT_NAME}_afma6_node ${catkin_LIBRARIES})
 target_link_libraries(${PROJECT_NAME}_viper650_node ${catkin_LIBRARIES})
+target_link_libraries(${PROJECT_NAME}_photometric_node ${catkin_LIBRARIES})
 target_link_libraries(${PROJECT_NAME}_viper850_node ${catkin_LIBRARIES})
 target_link_libraries(${PROJECT_NAME}_blob_tracker_node ${catkin_LIBRARIES} ${PROJECT_NAME})
 target_link_libraries(${PROJECT_NAME}_pbvs_blob_node ${catkin_LIBRARIES} ${PROJECT_NAME})
@@ -231,6 +236,7 @@ install(
     ${PROJECT_NAME}_blob_tracker_node
     ${PROJECT_NAME}_pbvs_blob_node
     ${PROJECT_NAME}_viper650_node
+    ${PROJECT_NAME}_photometric_node
     ${PROJECT_NAME}_viper850_node
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
